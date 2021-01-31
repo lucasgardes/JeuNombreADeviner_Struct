@@ -85,7 +85,6 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 
     }
     while (a < 3);
-    cout << "Vous allez jouer pour deviner un nombre secret" << endl;
 }
 
 
