@@ -54,7 +54,38 @@ int TirerNombreMystere()
 
 void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 {
-    //A COMPLETER
+    int a = 0;
+    int number; // nombre saisie par l'utilisateur
+
+    cout << "Trouve le nombre mystere" << endl;
+
+    cout << "entrer un nombre" << endl;
+
+    cin >> number;
+
+    do
+    {
+
+        a = a + 1;
+        if(number > nombreADeviner)
+            {
+                cout << "c'est moins" << endl;
+            }
+        else
+            {
+                cout << "c'est plus" << endl;
+            }
+        cin >> number;
+
+        if(number = nombreADeviner)
+        {
+            cout << "congratulations !" << endl;
+            a = 3;
+        }
+
+    }
+    while (a < 3);
+    cout << "Vous allez jouer pour deviner un nombre secret" << endl;
 }
 
 
