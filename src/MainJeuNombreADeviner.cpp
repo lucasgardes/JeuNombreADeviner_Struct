@@ -16,8 +16,14 @@ using namespace std;
 
 int main()
 {
+   TJoueur joueur1;
+
+    InitJoueur(joueur1,"Lucas");
+
+    TirerNombreMystere();
 
     cout << "Vous allez jouer pour deviner un nombre secret" << endl;
+    JouerPartie(joueur1,TirerNombreMystere());
 
     return 0;
 }

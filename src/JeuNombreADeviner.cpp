@@ -54,6 +54,7 @@ int TirerNombreMystere()
 
 void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 {
+    {
     int a = 0;
     int number; // nombre saisie par l'utilisateur
 
@@ -67,24 +68,36 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
     {
 
         a = a + 1;
+
+        if(a > 3)
+        {
+            cout << "You lose" << endl;
+            MajResultatsJoueur(un_joueur,a,false);
+            a = 4;
+        }
+
         if(number > nombreADeviner)
             {
                 cout << "c'est moins" << endl;
+                cin >> number;
             }
-        else
+        if(number < nombreADeviner)
             {
                 cout << "c'est plus" << endl;
+                cin >> number;
             }
-        cin >> number;
 
-        if(number = nombreADeviner)
+
+        if(number == nombreADeviner)
         {
             cout << "congratulations !" << endl;
-            a = 3;
+            MajResultatsJoueur(un_joueur,a,true);
+            a = 5;
         }
 
     }
-    while (a < 3);
+    while (a < 4);
+}
 }
 
 
@@ -96,7 +109,12 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 
 void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 {
-   // A COMPLETER
+        joueur.nbPartiesJouees++;
+        joueur.nbTentatives = joueur.nbTentatives + nbEssais;
+         if(gagne == true)
+        {
+            joueur.nbPartiesGagnees++;
+        }
 }
 
 // Nom : ResultatsJoueur
@@ -109,7 +127,9 @@ void MajResultatsJoueur(TJoueur &joueur, int nbEssais, bool gagne)
 
 void ResultatsJoueur(TJoueur joueur, int& nbsucces, int& nbechec, int& nbessais)
 {
-    // A COMPLETER
+        nbechec = joueur.nbPartiesJouees - joueur.nbPartiesGagnees;
+        nbsucces = joueur.nbPartiesGagnees;
+        nbessais = joueur.nbTentatives;
 }
 
 // Nom :Nom
