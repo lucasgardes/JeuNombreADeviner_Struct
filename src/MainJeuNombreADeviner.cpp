@@ -25,6 +25,14 @@ int main()
     cout << "Vous allez jouer pour deviner un nombre secret" << endl;
     JouerPartie(joueur1,TirerNombreMystere());
 
+    int nbessais = 0;
+    int nbechec = 0;
+    int nbsucces = 0;
+
+
+    ResultatsJoueur(joueur1,nbsucces,nbechec,nbessais);
+
+
     return 0;
 }
 

@@ -20,7 +20,7 @@ using namespace std;
 // Rôle : Crée un joueur. Initialise toutes les informations du joueur.
 //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
 // Paramètres d'entrée : un_nom
-// Paramètres de sortie : joeurAcreer
+// Paramètres de sortie : joueurAcreer
 // Paramètres d'entrée/sortie :
 
 void InitJoueur(TJoueur& joueurAcreer, string un_nom)
@@ -56,6 +56,7 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 {
     {
     int a = 0;
+    int nbessais = 1;
     int number; // nombre saisie par l'utilisateur
 
     cout << "Trouve le nombre mystere" << endl;
@@ -64,17 +65,11 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 
     cin >> number;
 
-    do
+    while (a < 3)
     {
 
         a = a + 1;
 
-        if(a > 3)
-        {
-            cout << "You lose" << endl;
-            MajResultatsJoueur(un_joueur,a,false);
-            a = 4;
-        }
 
         if(number > nombreADeviner)
             {
@@ -86,17 +81,22 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
                 cout << "c'est plus" << endl;
                 cin >> number;
             }
-
+        nbessais++;
 
         if(number == nombreADeviner)
         {
             cout << "congratulations !" << endl;
-            MajResultatsJoueur(un_joueur,a,true);
+            MajResultatsJoueur(un_joueur,nbessais,true);
             a = 5;
         }
-
     }
-    while (a < 4);
+    if (a == 3)
+        {
+            cout << "you lose" << endl;
+            MajResultatsJoueur(un_joueur,4,false);
+            a = 4;
+        }
+
 }
 }
 
