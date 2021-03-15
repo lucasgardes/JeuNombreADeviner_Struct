@@ -6,7 +6,8 @@
 // Date de création : 05/02/2021
 // Rôle du fichier: Contient la déclaration des attributs et méthodes de la classe qui représente un joueur
 // Nom des composants utilises: string
-// Historique du fichier:
+// Historique du fichier: 08/03/2021 Gardes Lucas : ajout du prénom d'un joueur et de la moyenne d'essais par partie
+//                        14/03/2021 Gardes Lucas : ajout du destructeur
 /*************************************************/
 #include <string>
 using namespace std;
@@ -20,10 +21,10 @@ class CJoueur {
     // Nom :CJoueur  Constructeur
     // Rôle : Initialise toutes les informations du joueur.
     //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
-    // Paramètre d'entrée : un_nom le nom du joueur
+    // Paramètre d'entrée : un_nom le nom du joueur, un_prenom le prenom du joueur
     // Sortie : le joueur créé
 
-    CJoueur(string un_nom);
+    CJoueur(string un_nom, string un_prenom);
 
     // Nom : MajResultats
     // Rôle : met à jour les informations d'un joueur
@@ -48,6 +49,11 @@ class CJoueur {
 
     void Resultats(int &nbsucces, int &nbechec, int & nbessais);
 
+    // Nom : MoyenneEssais
+    // Rôle : Calcule la moyenne des essais pour un joueur.
+
+    float MoyenneEssais();
+
 
     // Nom :Nom
     // Rôle : retourne le nom d'un joueur
@@ -57,6 +63,14 @@ class CJoueur {
 
     string Nom();
 
+    // Nom :Prenom
+    // Rôle : retourne le prenom d'un joueur
+    // Entrée: le joueur dont on veut le prenom
+    // Valeur de retour : prenom du joueur
+    // Entrée : le joueur dont on veut le prenom
+
+    string Prenom();
+
     // Nom :CJoueur  Destructeur
     // Rôle : détruit la classe. Affiche le nom du joueur et son adresse.
     // Paramètre d'entrée :
@@ -64,9 +78,13 @@ class CJoueur {
     ~CJoueur();
 
 
+
+
+
     private :
 
-        string nom;  // nom du joueur
+        string nom; // nom du joueur
+        string prenom; // prenom du joueur
         int nbPartiesJouees;
         int nbPartiesGagnees;
         int nbTentatives;

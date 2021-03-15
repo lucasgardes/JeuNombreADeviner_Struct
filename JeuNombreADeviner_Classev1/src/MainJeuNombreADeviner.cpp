@@ -8,7 +8,8 @@
 // Nom des composants utilises: CPartie
 //                              CJoueur
 //                              iostream
-// Historique du fichier:
+// Historique du fichier: 08/03/2021 Gardes Lucas : ajout du prénom d'un joueur et de la moyenne d'essais par partie
+//                        14/03/2021 Gardes Lucas : ajout du destructeur
 /*************************************************/
 #include <iostream>
 using namespace std;
@@ -24,9 +25,13 @@ int main()
     cout << "Veuillez entrer votre nom" << endl;
     string un_nom;
     cin >> un_nom;
+    cout << "Veuillez entrer votre prenom" << endl;
+    string un_prenom;
+    cin >> un_prenom;
+
 
     // Création du joueur
-    CJoueur joueur (un_nom);
+    CJoueur joueur (un_nom, un_prenom);
 
     cout << "----------------------------------------------"<< endl;
     cout << "Combien de parties voulez-vous jouer ?" << endl;
@@ -47,17 +52,19 @@ int main()
 
 
     cout << "----------------------------------------------"<< endl;
-    cout << "Affichage des resultats du joueur "<< joueur.Nom() << endl;
+    cout << "Affichage des resultats du joueur "<< joueur.Nom() << " " << joueur.Prenom() << endl;
     cout << "----------------------------------------------"<< endl;
 
     // Récupération des résultats du joueur
     int nbsucces, nbechecs, nbessais;
+    float moyenne;
     joueur.Resultats(nbsucces, nbechecs, nbessais);  // les paramètres sont passés par référence
-
+    moyenne = joueur.MoyenneEssais();
     // Affichage des résultats
     cout << "Nombre de parties gagnees : " << nbsucces << endl;
     cout << "Nombre de parties perdues : " << nbechecs << endl;
     cout << "Nombre de tentatives totales : " << nbessais << endl;
+    cout << "moyenne d'essais par partie :  " << moyenne << endl;
 
     cout << "----------------------------------------------"<< endl;
 

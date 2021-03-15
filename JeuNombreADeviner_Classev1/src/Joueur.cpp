@@ -6,7 +6,8 @@
 // Date de création : 05/02/2021
 // Rôle du fichier: Contient le code des méthodes du joueur
 // Nom des composants utilises:
-// Historique du fichier:
+// Historique du fichier: 08/03/2021 Gardes Lucas : ajout du prénom d'un joueur et de la moyenne d'essais par partie
+//                        14/03/2021 Gardes Lucas : ajout du destructeur
 /*************************************************/
 #include <iostream>
 using namespace std;
@@ -16,12 +17,13 @@ using namespace std;
     // Rôle : Initialise toutes les informations du joueur.
     //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
     // Paramètre d'entrée :
-    //                  un_nom : le nom du joueur
+    //                  un_nom : le nom du joueur, le prenom du joueur
     // Sortie : le joueur créé
 
-    CJoueur::CJoueur(string un_nom)
+    CJoueur::CJoueur(string un_nom, string un_prenom)
     {
         this->nom = un_nom;
+        this->prenom = un_prenom;
         this->nbPartiesGagnees = 0;
         this->nbPartiesJouees=0;
         this->nbTentatives=0;
@@ -69,6 +71,17 @@ using namespace std;
         nbessais = this->nbTentatives;
     }
 
+    // Nom : MoyenneEssais
+    // Rôle : Calcule la moyenne des essais pour un joueur.
+
+    float CJoueur::MoyenneEssais()
+    {
+        float moyenne = 0;
+        moyenne = (float) this->nbTentatives / this->nbPartiesJouees;
+        return moyenne;
+    }
+
+
 
 
     // Nom :Nom
@@ -79,18 +92,28 @@ using namespace std;
 
     string CJoueur::Nom()
     {
-
         return this->nom;
     }
 
-    // Nom :CJoueur  Destructeur
+    // Nom :Prenom
+    // Rôle : retourne le prenom d'un joueur
+    // Entrée: le joueur dont on veut le prenom
+    // Valeur de retour : prenom du joueur
+    // Entrée : le joueur dont on veut le prenom
+
+    string CJoueur::Prenom()
+    {
+        return this->prenom;
+    }
+
+     // Nom :CJoueur  Destructeur
     // Rôle : détruit la classe. Affiche le nom du joueur et son adresse.
     // Paramètre d'entrée :
     // Sortie :
 
      CJoueur::~CJoueur()
     {
-        cout << "joueur qui va etre detruit :  " << CJoueur::Nom()  << endl;
+        cout << "joueur qui va etre detruit :  " << this->nom << " " << this->prenom  << endl;
         cout << "Adresse du joueur :  " << this << endl;
     }
 
